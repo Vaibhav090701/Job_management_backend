@@ -33,8 +33,9 @@ public class JobController {
     public List<Job> filterJobs(
             @RequestParam(required = false) String jobTitle,
             @RequestParam(required = false) String location,
-            @RequestParam(required = false) String jobType) {
-        return jobService.filterJobs(jobTitle, location, jobType);
+            @RequestParam(required = false) String jobType,
+            @RequestParam(required = false) String salarayRange) {
+        return jobService.filterJobs(jobTitle, location, jobType, salarayRange);
     }
     
     @GetMapping("/dummy")

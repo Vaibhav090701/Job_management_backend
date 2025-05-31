@@ -23,14 +23,35 @@ public class JobService {
         return jobRepository.save(job);
     }
 
-    public List<Job> filterJobs(String jobTitle, String location, String jobType) {
-        if (jobTitle != null && !jobTitle.isEmpty()) {
-            return jobRepository.findByJobTitleContainingIgnoreCase(jobTitle);
-        } else if (location != null && !location.isEmpty()) {
-            return jobRepository.findByLocationContainingIgnoreCase(location);
-        } else if (jobType != null && !jobType.isEmpty()) {
-            return jobRepository.findByJobType(jobType);
+    public List<Job> filterJobs(String jobTitle, String location, String jobType, String salaryRange) {
+        double min = 0;
+        double max = Integer.MAX_VALUE;
+
+        if (salaryRange != null && salaryRange.contains("-")) {
+            String[] parts = salaryRange.split("-");
+            try {
+                min = Double.parseDouble(parts[0]);
+                max = Double.parseDouble(parts[1]);
+            } catch (NumberFormatException ignored) {}
         }
-        return jobRepository.findAll();
+
+        final double minSalary = min;
+        final double maxSalary = max;
+
+        return jobRepository.findAll().stream()
+            .filter(job -> (jobTitle == null || job.getJobTitle().toLowerCase().contains(jobTitle.toLowerCase())))
+            .filter(job -> (location == null || job.getLocation().toLowerCase().equals(location.toLowerCase())))
+            .filter(job -> (jobType == null || job.getJobType().equalsIgnoreCase(jobType)))
+            .filter(job -> {
+                try {
+                    double jobMin = job.getMinSalary();
+                    double jobMax = job.getMaxSalary();
+                    return jobMax >= minSalary && jobMin <= maxSalary;
+                } catch (Exception e) {
+                    return true; // Don't filter if parsing fails
+                }
+            })
+            .toList();
     }
+
 }
