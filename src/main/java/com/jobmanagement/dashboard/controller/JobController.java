@@ -8,8 +8,8 @@ import com.jobmanagement.dashboard.service.JobService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "https://job-management-frontend-five.vercel.app/")
 @RequestMapping("/api/jobs")
-@CrossOrigin(origins = "http://localhost:3000")
 public class JobController {
 
     private final JobService jobService;
