@@ -1,14 +1,20 @@
-# Use Eclipse Temurin JDK 17 (compatible with Spring Boot 3.x, lightweight Alpine variant)
-FROM eclipse-temurin:17-jdk-alpine
-
-# Set working directory inside the container
+# Use Maven image to build the app
+FROM maven:3.9.4-eclipse-temurin-17 AS build
 WORKDIR /app
 
-# Copy the built JAR file from the target directory (Maven output)
-COPY target/*.jar app.jar
+# Copy all files
+COPY . .
 
-# Expose the port (Render assigns dynamically via PORT env variable, default 8080 locally)
-EXPOSE ${PORT:8080}
+# Package the application
+RUN mvn clean package -DskipTests
 
-# Run the Spring Boot JAR
-ENTRYPOINT ["java", "-jar", "/app.jar"]
+# Use a smaller base image for the final container
+FROM eclipse-temurin:17
+WORKDIR /app
+
+# Copy the jar from the previous stage
+COPY --from=build /app/target/*.jar app.jar
+
+# Run the jar file
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
