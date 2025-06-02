@@ -21,19 +21,19 @@ public class DataInitializer implements CommandLineRunner {
 	public void run(String... args) throws Exception {
         jobRepository.save(new Job(null, "Full Stack Developer", "Amazon", "Remote", "Full-time", 300000,  1200000, 
                 "A user-friendly interface lets you browse stunning photos and videos", "1-3 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "Node Js Developer", "Tesla", "Remote", "Full-time", 300000,  1200000,
+            jobRepository.save(new Job(null, "Node Js Developer", "Tesla", "Chennai", "Internship", 300000,  1200000,
                 "A user-friendly interface lets you browse stunning photos and videos", "3-7 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "UX/UI Designer", "Spotify", "Remote", "Full-time", 300000,  1200000, 
+            jobRepository.save(new Job(null, "UX/UI Designer", "Swiggy", "Mumbai", "Full-time", 300000,  1200000, 
                 "A user-friendly interface lets you browse stunning photos and videos", "3-7 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "Full Stack Developer", "Amazon", "Remote", "Full-time", 300000,  1200000,
+            jobRepository.save(new Job(null, "Full Stack Developer", "Amazon", "Remote", "Part-time", 300000,  1200000,
                 "A user-friendly interface lets you browse stunning photos and videos", "1-3 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
             jobRepository.save(new Job(null, "Node Js Developer", "Tesla", "Remote", "Full-time", 300000,  1200000, 
                 "A user-friendly interface lets you browse stunning photos and videos", "3-7 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "UX/UI Designer", "Spotify", "Remote", "Full-time", 300000,  1200000,
+            jobRepository.save(new Job(null, "UX/UI Designer", "Swiggy", "Chennai", "Internship", 300000,  1200000,
                 "A user-friendly interface lets you browse stunning photos and videos", "3-7 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "Full Stack Developer", "Amazon", "Remote", "Full-time",300000,  1200000, 
+            jobRepository.save(new Job(null, "Full Stack Developer", "Amazon", "Mumbai", "Full-time",300000,  1200000, 
                 "A user-friendly interface lets you browse stunning photos and videos", "1-3 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));
-            jobRepository.save(new Job(null, "Node Js Developer", "Tesla", "Remote", "Full-time", 300000,  1200000, 
+            jobRepository.save(new Job(null, "Node Js Developer", "Tesla", "Pune", "Part-time", 300000,  1200000, 
                 "A user-friendly interface lets you browse stunning photos and videos", "3-7 Yr Exp", "Onsite", LocalDate.now().minusDays(24)));		
 	}
 
